@@ -1,0 +1,1 @@
+CREATE INDEX idx_staff_salary on staff(salary)
