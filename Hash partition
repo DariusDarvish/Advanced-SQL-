@@ -1,0 +1,21 @@
+CREATE TABLE customer_interactions
+(ci_id int not null,
+ci_url text not null,
+time_at_url int not null,
+click_sequence int not null)
+PARTITION BY HASH(ci_id);
+
+CREATE TABLE customer_interactions_1 PARTITION OF customer_interactions
+FOR VALUES WITH(MODULUS 5,REMAINDER 0);
+
+CREATE TABLE customer_interactions_2 PARTITION OF customer_interactions
+FOR VALUES WITH(MODULUS 5,REMAINDER 1);
+
+CREATE TABLE customer_interactions_3 PARTITION OF customer_interactions
+FOR VALUES WITH(MODULUS 5,REMAINDER 2);
+
+CREATE TABLE customer_interactions_4 PARTITION OF customer_interactions
+FOR VALUES WITH(MODULUS 5,REMAINDER 3);
+
+CREATE TABLE customer_interactions_5 PARTITION OF customer_interactions
+FOR VALUES WITH(MODULUS 5,REMAINDER 4);
